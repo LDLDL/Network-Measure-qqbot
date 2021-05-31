@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>SpeedTest Results</title>
+    <link rel="stylesheet" href="css/speedtest.css">
+</head>
+<body>
+    <div id="speed">
+        <div class="speedtestinfo">
+            <div class="ip">IP address: {{ip}}</div>
+            <div class="location">Location: {{location}}</div>
+            <div class="latency">Latency: {{latency.toFixed(2)}} ms</div>
+            <div class="received">Received Bytes: {{received}}</div>
+        </div>
+        <div id="chart">
+            <apexchart type="area" height="460" :options="chartOptions" :series="series"></apexchart>
+        </div>
+        <div class="nodeinfo">
+            <div>Node: {{node}} Start Time: {{stime}}</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <script type="text/javascript" src="js/apexcharts"></script>
+    <script type="text/javascript" src="js/vue-apexcharts"></script>
+    <script type="text/javascript" src="js/speedtest.js"></script>
+</body>
+</html>

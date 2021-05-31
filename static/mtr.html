@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>MTR Results</title>
+    <link rel="stylesheet" href="css/mtr.css">
+</head>
+<body>
+    <div id="mtr" v-bind:class="style_class">
+        <div class="container header">
+            <div class="index">#</div>
+            <div class="ip">IP</div>
+            <div class="loss">Loss</div>
+            <div class="stat">Stat</div>
+        </div>
+
+        <div class="container body" v-for="(item, index) in hopdata">
+            <!-- Begin template -->
+            <!-- Begin hop -->
+            <div class="container hop" v-if="item.address == ''">
+                <div class="index">{{index}}</div>
+                <div class="dropped"></div>
+            </div>
+            <!-- End hop -->
+            <!-- End template -->
+
+            <!-- Begin template -->
+            <!-- Begin hop -->
+            <div class="container hop" v-else-if="(index !== hopdata.length - 1)">
+                <div class="index">{{index}}</div>
+                <div class="ip">
+                    <!-- Begin ip-->
+                    <div class="block">
+                        <span class="address">{{item.address[0]}}</span><br>
+                        <span class="location">{{item.location}}</span><br>
+                        <span class="rdns">{{item.rdns[0]}}</span>
+                    </div>
+                    <!-- end ip-->
+                </div>
+                <div class="loss">
+                    <span class="drop">{{item.loss.toFixed(2)}}</span> drop,
+                    <span class="total">{{(item.received + item.lossed).toFixed(2)}}</span> total
+                </div>
+                <div class="stat">
+                    <div class="minmax">
+                        <div class="max">
+                            {{item.worst.toFixed(2)}}
+                        </div>
+                        <div class="min">
+                            {{item.best.toFixed(2)}}
+                        </div>
+                    </div>
+                    <div class="avg">
+                        {{item.avg.toFixed(2)}}
+                    </div>
+                    <div class="sdev">
+                        {{item.sdev.toFixed(2)}}
+                    </div>
+                </div>
+            </div>
+            <!-- End hop -->
+            <!-- End template -->
+
+            <!-- Begin template -->
+            <!-- Begin hop -->
+            <div class="container hop" v-else>
+                <div class="index">{{index}}</div>
+                <div class="ip">
+                    <!-- Begin ip-->
+                    <div class="block target">
+                        <span class="address">{{item.address[0]}}</span><br>
+                        <span class="location">{{item.location}}</span><br>
+                        <span class="rdns">{{item.rdns[0]}}</span>
+                    </div>
+                    <!-- end ip-->
+                </div>
+                <div class="loss">
+                    <span class="drop">{{item.loss.toFixed(2)}}</span> drop,
+                    <span class="total">{{(item.received + item.lossed).toFixed(2)}}</span> total
+                </div>
+                <div class="stat">
+                    <div class="minmax">
+                        <div class="max">
+                            {{item.worst.toFixed(2)}}
+                        </div>
+                        <div class="min">
+                            {{item.best.toFixed(2)}}
+                        </div>
+                    </div>
+                    <div class="avg">
+                        {{item.avg.toFixed(2)}}
+                    </div>
+                    <div class="sdev">
+                        {{item.sdev.toFixed(2)}}
+                    </div>
+                </div>
+            </div>
+            <!-- End hop -->
+            <!-- End template -->
+        </div>
+
+        <div class="info">
+                MTR to {{address}}
+                <br> Node: {{node}} Start time: {{mtrtime}}
+        </div>
+    </div>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <script type="text/javascript" src="js/mtr.js"></script>
+</body>
+</html>

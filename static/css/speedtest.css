@@ -1,0 +1,37 @@
+#speed {
+  max-width: 1000px;
+  margin: 0;
+
+  font-family: 'Source Han Sans', sans-serif;
+  font-size: 90%;
+  color: #212121;
+}
+
+#speed .speedtestinfo {
+  display: grid;
+  grid-template-columns: 1fr 5fr 5fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: ". ip latency"
+                       ". location received";
+}
+
+#speed .speedtestinfo .ip {
+  grid-area: ip;
+}
+
+#speed .speedtestinfo .latency {
+  grid-area: latency;
+}
+
+#speed .speedtestinfo .location {
+  grid-area: location;
+}
+
+#speed .speedtestinfo .received {
+  grid-area: received;
+}
+
+#speed .nodeinfo {
+  text-align: right;
+  margin-right: 10px;
+}

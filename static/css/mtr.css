@@ -1,0 +1,266 @@
+html,
+body {
+    margin: 0;
+}
+
+#mtr {
+    width: 950px;
+    display: grid;
+    grid-template-columns: min-content auto repeat(4, min-content);
+    transform: scale(1.5);
+    transform-origin: top left;
+    text-shadow: 0.01em 0.01em 0.025em #999999cf, 0.01em 0.01em 0.05em #9999997f;
+}
+
+.container {
+    display: contents;
+}
+
+#mtr .header > * {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 3em;
+    background-color: #afb42b;
+    color: white;
+}
+
+#mtr .header .stat {
+    grid-column: span 3;
+}
+
+#mtr .header > * {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#mtr .body .hop > * {
+    padding: 10px 20px;
+}
+
+#mtr .body .hop:nth-of-type(2n) > *,
+#mtr .body .hop:nth-of-type(2n) .stat > * {
+    background-color: #f1f8e9;
+}
+
+#mtr .index {
+    text-align: center;
+}
+
+#mtr .body .index {
+    line-height: 1em;
+}
+
+#mtr .body .ip {
+    white-space: nowrap;
+}
+
+#mtr .body .ip .block {
+    max-width: 420px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#mtr .body .ip .block:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+#mtr .body .ip .address {
+    font-family: 'Fira Code';
+    font-weight: 500;
+    font-size: 1.1em;
+    line-height: 1em;
+}
+
+#mtr .body .ip .target .address {
+    color: #2962ff;
+}
+
+#mtr .body .ip .location,
+#mtr .body .ip .rdns {
+    font-size: 0.8em;
+    color: #333;
+}
+
+#mtr .body .ip .location {
+    font-family: 'Source Han Sans', sans-serif;
+    font-weight: bold !important;
+}
+
+#mtr .body .ip .rdns {
+    font-family: 'Fira Sans Condensed';
+}
+
+#mtr .body .ip .target .location,
+#mtr .body .ip .target .rdns {
+    color: #1976d2;
+}
+
+#mtr .loss,
+#mtr .stat {
+    text-align: center;
+}
+
+#mtr .body .loss .drop:after {
+    content: "%";
+}
+
+#mtr .body .loss {
+    font-family: 'Source Sans Pro', sans-serif;
+    white-space: nowrap;
+    line-height: 3.1em;
+    text-align: right;
+}
+
+#mtr .body .loss .drop,
+#mtr .body .loss .total {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #7b1fa2;
+}
+
+#mtr .body .stat {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: contents;
+    height: 3em;
+    line-height: 1.5em;
+    white-space: nowrap;
+}
+
+#mtr .body .stat > * {
+    padding-top: 12px;
+    padding-bottom: 5px;
+}
+
+#mtr .body .stat .minmax,
+#mtr .body .stat .avg {
+    text-align: right;
+}
+
+#mtr .body .stat .sdev {
+    text-align: left;
+}
+
+#mtr .body .stat .minmax {
+    padding-right: 1ch;
+}
+
+#mtr .body .stat .min::after,
+#mtr .body .stat .max::after,
+#mtr .body .stat .avg::after,
+#mtr .body .stat .sdev::after {
+    content: "ms";
+}
+
+#mtr .body .stat .min:empty::after,
+#mtr .body .stat .max:empty::after,
+#mtr .body .stat .avg:empty::after,
+#mtr .body .stat .sdev:empty::after,
+#mtr .body .stat .min:-moz-only-whitespace::after,
+#mtr .body .stat .max:-moz-only-whitespace::after,
+#mtr .body .stat .avg:-moz-only-whitespace::after,
+#mtr .body .stat .sdev:-moz-only-whitespace::after {
+    content: "-";
+}
+
+#mtr .body .stat .min {
+    color: #388e3c;
+}
+
+#mtr .body .stat .max {
+    color: #d32f2f;
+}
+
+#mtr .body .stat .avg {
+    line-height: 2em;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+#mtr .body .stat .sdev {
+    padding-left: 1ch;
+    padding-top: 2.2em;
+    color: #f57c00;
+    padding-right: 1ch;
+}
+
+#mtr .body .dropped {
+    grid-column: span 5;
+    font-family: 'Fira Code';
+    font-weight: 500;
+    font-size: 1.1em;
+    line-height: 1em;
+    height: 2.6em;
+}
+
+#mtr .body .dropped::before {
+    content: "*";
+}
+
+#mtr .info {
+    grid-column: span 6;
+    font-family: 'Fira Code';
+    font-size: 0.5em;
+    font-weight: 300;
+    text-align: right;
+    margin: 15px 8px 8px;
+    line-height: 1.5em;
+    color: #aaa;
+    text-shadow: none;
+}
+
+#mtr.night {
+    background-color: #111;
+    color: #ccc;
+    text-shadow: 0.02em 0.02em 0.05em #555555cf, 0.02em 0.02em 0.10em #5555557f;
+}
+
+#mtr.night .header > * {
+    background-color: black;
+    color: #ccc;
+}
+
+#mtr.night .body .hop:nth-of-type(2n) > *,
+#mtr.night .body .hop:nth-of-type(2n) .stat > * {
+    background-color: #222;
+}
+
+#mtr.night .body .ip .target .address {
+    color: #7096ff;
+}
+
+#mtr.night .body .ip .location,
+#mtr.night .body .ip .rdns {
+    color: #aaa;
+}
+
+#mtr.night .body .ip .target .location,
+#mtr.night .body .ip .target .rdns {
+    color: #7eaddd;
+}
+
+#mtr.night .body .loss .drop,
+#mtr.night .body .loss .total {
+    color: #ba80d3;
+}
+
+#mtr.night .body .stat .min {
+    color: #68cc6d;
+}
+
+#mtr.night .body .stat .max {
+    color: #d65b5b;
+}
+
+#mtr.night .body .stat .avg {
+    color: #59a8f7;
+}
+
+#mtr.night .body .stat .sdev {
+    color: #ff942a;
+}
+
+#mtr.night .info {
+    color: #777;
+}
