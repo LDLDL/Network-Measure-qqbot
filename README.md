@@ -29,6 +29,6 @@ https://github.com/Mrs4s/go-cqhttp
 配置文件例子见config.yml  
 
 # 机器人命令  
-![image](https://github.com/LDLDL/Network-Measure-qqbot/mdpic/command.jpg)  
-![image](https://github.com/LDLDL/Network-Measure-qqbot/mdpic/mtr.jpg)  
-![image](https://github.com/LDLDL/Network-Measure-qqbot/mdpic/speed.jpg)  
+![image](https://github.com/LDLDL/Network-Measure-qqbot/blob/main/mdpic/command.jpg)  
+![image](https://github.com/LDLDL/Network-Measure-qqbot/blob/main/mdpic/mtr.png)  
+![image](https://github.com/LDLDL/Network-Measure-qqbot/blob/main/mdpic/speed.png)  
