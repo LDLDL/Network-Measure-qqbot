@@ -8,6 +8,7 @@ python >= 3.8
 1. python packages
 ```
 pip3 install aiohttp
+pip3 install aiofile
 pip3 install selenium
 ```
 
