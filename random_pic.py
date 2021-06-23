@@ -8,7 +8,7 @@ from argumentparser import ArgumentParser
 class random_pic:
     def __init__(self):
         self.parser_n = ArgumentParser(
-            prog='#poi',
+            prog='poi',
             description='发送N张随机图片',
             add_help=False,
             exit_on_error=False,

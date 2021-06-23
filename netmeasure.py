@@ -289,7 +289,7 @@ class netmeasure:
         ])
 
         self.resolve_parse = argumentparser.ArgumentParser(
-            prog='#ipr',
+            prog='ipr',
             description='resolve ip address',
             allow_abbrev=False,
             add_help=False,
@@ -298,7 +298,7 @@ class netmeasure:
         self._add_resolve_argument()
 
         self.ping_parse = argumentparser.ArgumentParser(
-            prog='#ping',
+            prog='ping',
             description='ping',
             allow_abbrev=False,
             add_help=False,
@@ -307,7 +307,7 @@ class netmeasure:
         self._add_ping_argument()
 
         self.mtr_parse = argumentparser.ArgumentParser(
-            prog='#mtr',
+            prog='mtr',
             description='trace route',
             allow_abbrev=False,
             add_help=False,
@@ -316,7 +316,7 @@ class netmeasure:
         self._add_mtr_argument()
 
         self.tcping_parse = argumentparser.ArgumentParser(
-            prog='#tcping',
+            prog='tcping',
             description='tcping',
             allow_abbrev=False,
             add_help=False,
@@ -325,7 +325,7 @@ class netmeasure:
         self._add_tcping_argument()
 
         self.speed_parse = argumentparser.ArgumentParser(
-            prog='#speed',
+            prog='speed',
             description='speed test',
             allow_abbrev=False,
             add_help=False,
@@ -963,4 +963,4 @@ class netmeasure:
                 return
             await session.send_msg('请求失败')
         except argumentparser.ArgumentError as err:
-            await session.send_msg(f'{str(err)} \n{self.mtr_parse.format_help()}')
+            await session.send_msg(f'{str(err)} \n{self.speed_parse.format_help()}')
