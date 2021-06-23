@@ -15,8 +15,14 @@ let stv = new Vue({
         series: [
             {
                 name: 'speed',
+                type: 'area',
                 data: []
             },
+            {
+                name: 'average',
+                type: 'area',
+                data: []
+            }
         ],
         chartOptions: {
             chart: {
@@ -24,6 +30,9 @@ let stv = new Vue({
                 type: 'area',
                 toolbar: {
                     show: false
+                },
+                animations: {
+                    enabled: false
                 }
             },
             dataLabels: {
@@ -31,6 +40,9 @@ let stv = new Vue({
             },
             stroke: {
                 curve: 'smooth'
+            },
+            fill: {
+                type: ['gradient', 'image']
             },
             xaxis: {
                 type: "numeric",
@@ -64,6 +76,10 @@ let stv = new Vue({
                     this.series[0].data.push({
                         x: value["point"],
                         y: value["received"]
+                    })
+                    this.series[1].data.push({
+                        x: value['point'],
+                        y: response.data.average
                     })
                 }
             })

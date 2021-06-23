@@ -937,6 +937,7 @@ class netmeasure:
                             'location': '',
                             'latency': latency,
                             'received': received,
+                            'average': round(8 * resp.get('result').get('received') / elapsed / 1000, 2),
                             'time': time.strftime("%Y-%m-%d %H:%M:%S %Z", time.localtime()),
                             'node': serv.name,
                             'data': result_list
