@@ -20,7 +20,7 @@ pip3 install selenium
 4. network-measure api  
 https://github.com/tongyuantongyu/network-measure  
 下载 release binary  
-编辑 config.toml (见: https://github.com/tongyuantongyu/network-measure/exec/http/config.example.toml)  
+编辑 config.toml (见: https://github.com/tongyuantongyu/network-measure/blob/main/exec/http/config.example.toml)  
 配置ip地址 端口号 和密码，并将信息填入本机器人的config.py  
 在需要的地方运行此api(可以多处运行多个api)  
 
