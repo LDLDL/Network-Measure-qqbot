@@ -2,6 +2,8 @@ import random
 import os
 import time
 import argparse
+import json
+import asyncio
 from argumentparser import ArgumentParser
 
 
@@ -23,24 +25,31 @@ class random_pic:
             help='图片数N',
             type=int
         )
-        self.pics = dict()
         self.artists = list()
         self._update_pic()
 
     def _update_pic(self):
-        self.pics = dict()
+        self.artists = list()
         _work_dir = os.getcwd()
-        _artists = os.listdir('pics')
-        for artist in _artists:
-            _pics = os.listdir(f'pics/{artist}')
-            self.pics[artist] = [f'file://{_work_dir}/pics/{artist}/{p}' for p in _pics]
-        self.artists = list(self.pics.keys())
+        with open('pics/artists.json') as fp:
+            _artists = json.load(fp)
+            for dic in _artists:
+                _dir_name = dic.get('dir')
+                _pics_name = os.listdir(f'pics/{_dir_name}/')
+                dic['pics'] = [f'file://{_work_dir}/pics/{_dir_name}/{p}' for p in _pics_name]
+                self.artists.append(dic)
+    
+    async def send_random_pic(self, session):
+        _artist = random.choice(self.artists)
+        _pic_list = _artist.get('pics')
+        if _pic_list:
+            await session.send_msg(
+                f'{session.picstr(random.choice(_pic_list))}\n画师: {_artist.get("name")}\nID: {_artist.get("pid")}'
+            )
 
     async def random_pic_handler(self, msg_event, session):
         if msg_event.message == '~':
-            _artist = random.choice(self.artists)
-            _pic = random.choice(self.pics.get(_artist))
-            await session.send_msg(f'{session.picstr(_pic)}\n画师: {_artist}')
+            await self.send_random_pic(session)
 
     async def random_pics_handler(self, msg_event, session):
         try:
@@ -56,9 +65,8 @@ class random_pic:
             session.var['last_post'] = time.time()
 
             for i in range(n):
-                _artist = random.choice(self.artists)
-                _pic = random.choice(self.pics.get(_artist))
-                await session.send_msg(f'{session.picstr(_pic)}画师: {_artist}')
+                await self.send_random_pic(session)
+                await asyncio.sleep(0.5)
         except argparse.ArgumentError as err:
             await session.send_msg(f'{str(err)} \n{self.parser_n.format_help()}')
 
@@ -66,5 +74,5 @@ class random_pic:
         self._update_pic()
         count = 0
         for artist in self.artists:
-            count += len(self.pics.get(artist))
+            count += len(artist.get('pics'))
         await session.send_msg(f'图库更新完成!\n共有{count}张图片, 画师数: {len(self.artists)}')
